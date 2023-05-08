@@ -1,0 +1,61 @@
+pipeline {
+    agent none
+    stages {
+        stage('bitbucket') {
+            steps {
+                script {
+                    echo "Will store the code developed in bitbucket"
+                }
+            }
+        }
+        stage('jenkins') {
+            steps {
+                script {
+                    echo "will build and package the code in jenkins using maven by implementing webhook "
+                }
+            }
+        }
+        stage('sonarkube') {
+            steps {
+                script {
+                    echo "will check the code quality in sonarkube "
+                }
+            }
+        }
+        stage('test') {
+            steps {
+                script {
+                    echo "will test the code"
+                }
+            }
+        }
+        stage('staging') {
+            steps {
+                script {
+                    echo "code will be in staging area"
+                }
+            }
+        }
+        stage('push to nexus') {
+            steps {
+                script {
+                    echo "push the image into nexus repo"
+                }
+            }
+        }
+        stage('deploy in openshift') {
+            steps {
+                script {
+                    echo "deploy the images from nexus repo to openshift based on aws"
+                }
+            }
+        }
+        stage('datadog') {
+            steps {
+                script {
+                    echo "implemet in datadog"
+                }
+            }
+        }
+    }
+}
